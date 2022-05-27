@@ -1,0 +1,4 @@
+.pytest_cache
+__pyca*
+.coverage
+cov.xml
