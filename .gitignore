@@ -2,3 +2,5 @@
 __pyca*
 .coverage
 cov.xml
+.devcontainer
+.devcontainer/.aws

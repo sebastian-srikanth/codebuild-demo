@@ -14,6 +14,3 @@ class aws_service:
 
 	def user_login(self,user='anonymous-user'):
 		self.logger.info(f'{user} has logged in !!!  ')
-
-# call_service = aws_service()
-# call_service.user_login()
