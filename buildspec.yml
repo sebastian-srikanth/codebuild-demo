@@ -5,7 +5,7 @@ phases:
       runtime-versions:
         python: 3.7
       commands:
-        - pip3 install pytest
+        - pip3 install pytest-cov
   pre_build:
     commands:
       - echo setting up env variables
