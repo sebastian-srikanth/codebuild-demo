@@ -9,7 +9,7 @@ COPY requirements.txt .
 # install dependencies
 RUN pip install -r requirements.txt
 
-RUN COPY scripts ./
-RUN COPY main.py ./
+COPY scripts ./
+COPY main.py ./
 
 RUN ENTRYPOINT ["python", "main.py sebastin"]
