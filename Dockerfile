@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 COPY scripts ./scripts
 COPY main.py .
 
-ENTRYPOINT ["python", "main.py", "sebastian"]
+# ENTRYPOINT ["python", "main.py", "sebastian"]
