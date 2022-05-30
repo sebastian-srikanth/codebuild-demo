@@ -1,0 +1,4 @@
+AWS_ACCOUNT_ID=670117393651
+ECR_REPO_NAME=670117393651.dkr.ecr.ap-south-1.amazonaws.com/demo-codebuild
+AWS_DEFAULT_REGION=ap-south-1
+IMAGE=latest
