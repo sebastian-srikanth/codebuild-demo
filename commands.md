@@ -46,4 +46,3 @@ aws batch deregister-job-definition --job-definition demo-definition
 aws batch describe-job-definitions
 
  aws batch submit-job --job-name test-batch-job --job-queue demo-queue --job-definition demo-definition --container-overrides command=["python","main.py srikanth"]
-
