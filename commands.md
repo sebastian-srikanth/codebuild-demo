@@ -21,15 +21,16 @@ response:
 
 
 <!-- Setup Compute environment -->
-
+<!--  EC2 -->
  aws batch create-compute-environment --compute-environment-name batch-demo --type MANAGED --state ENABLED --compute-resources type=EC2,minvCpus=0,maxvCpus=256,desiredvCpus=0,instanceTypes=optimal,subnets=['subnet-1c106a50','subnet-b5c4d1dd','subnet-2e34b955'],securityGroupIds=['sg-ae0b3dc9'],instanceRole=arn:aws:iam::670117393651:instance-profile/ecsInstanceRole --service-role arn:aws:iam::670117393651:role/aws-service-role/batch.amazonaws.com/AWSServiceRoleForBatch
 
+<!-- SPOT -->
  aws batch create-compute-environment --compute-environment spot-batch-demo --type MANAGED --state ENABLED --compute-resources type=SPOT,minvCpus=0,maxvCpus=256,desiredvCpus=0,instanceTypes=optimal,allocationStrategy=SPOT_CAPACITY_OPTIMIZED,subnets=['subnet-1c106a50','subnet-b5c4d1dd','subnet-2e34b955'],securityGroupIds=['sg-ae0b3dc9'],instanceRole=arn:aws:iam::670117393651:instance-profile/ecsInstanceRole --service-role arn:aws:iam::670117393651:role/aws-service-role/batch.amazonaws.com/AWSServiceRoleForBatch
 
 aws batch describe-compute-environments
 
 <!-- Create Job queue -->
-aws batch create-job-queue --job-queue-name=demo-queue --state=ENABLED --priority=100 --compute-environment-order order=1,computeEnvironment=batch-demo
+aws batch create-job-queue --job-queue-name=demo-queue --state=ENABLED --priority=100 --compute-environment-order order=1,computeEnvironment=spot-batch-demo
 
 aws batch update-job-queue --job-queue demo-queue --compute-environment-order order=1,computeEnvironment=spot-batch-demo
 
@@ -45,4 +46,4 @@ aws batch deregister-job-definition --job-definition demo-definition
 
 aws batch describe-job-definitions
 
- aws batch submit-job --job-name test-batch-job --job-queue demo-queue --job-definition demo-definition --container-overrides command=["python","main.py srikanth"]
+ aws batch submit-job --job-name test-batch-job --job-queue demo-queue --job-definition demo-definition --container-overrides command=["python","main.py","srikanth"]
