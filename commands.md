@@ -47,3 +47,44 @@ aws batch deregister-job-definition --job-definition demo-definition
 aws batch describe-job-definitions
 
  aws batch submit-job --job-name test-batch-job --job-queue demo-queue --job-definition demo-definition --container-overrides command=["python","main.py","srikanth"]
+
+ aws codebuild create-project \
+    --name codebuild-demo \
+    --environment type=LINUX_CONTAINER,image=aws/codebuild/amazonlinux2-x86_64-standard:3.0,computeType=BUILD_GENERAL1_SMALL \
+    --source type=GITHUB,location=https://github.com/sebastian-srikanth/codebuild-demo \
+    --service-role arn:aws:iam::670117393651:role/demo-codebuild-role \
+    --artifacts type=NO_ARTIFACTS
+
+
+Image
+aws/codebuild/amazonlinux2-x86_64-standard:3.0
+
+Environment type
+Linux
+
+Service role
+arn:aws:iam::670117393651:role/demo-codebuild-role
+
+
+HEAD_REF
+code-build
+
+1. Move the data from DB1 to DB2
+2. Get the data type report
+3. Get the data reports with Graph
+    Some issue with reporting and new dev
+4. A dev goes on leave and client wants to run on his own
+    Set up a container, install all packages, dependencies, build image and give
+5. Lazy to run python main.py so client get fed up 
+    As soon as the data comes to DB1 it has to go to DB2
+6. Even though I get the wrong data I need to clean and load that data, So that I can fasten the data flow process
+7. DB1 contract I lost and its giving poor performance I'm chaning the DB1
+    7a. I need to add few more validations
+    7b. And accept new source
+        Batch process data
+        Stream Data
+8. I need a website that accepts any database to any database
+9. Any cloud to any other cloud
+10. Need a visualzations with charmings dashboards
+11. Website should be able to run AI/ML algorithms
+12. 
