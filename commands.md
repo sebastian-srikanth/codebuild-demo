@@ -87,4 +87,3 @@ code-build
 9. Any cloud to any other cloud
 10. Need a visualzations with charmings dashboards
 11. Website should be able to run AI/ML algorithms
-12. 
