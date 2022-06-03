@@ -6,6 +6,7 @@ phases:
         python: 3.7
       commands:
         - pip3 install pytest-cov
+        - pip3 install pytest-pylint
   pre_build:
     commands:
       - echo setting up env variables
@@ -42,11 +43,9 @@ reports:
     files:
       - "pylint_report.xml"
     base-directory: reports
-    discard-paths: yes
     file-format: JunitXml
   coverage-report-group:
     files:
       - "coverage_report.xml"
     base-directory: reports
-    discard-paths: yes
     file-format: COBERTURAXML
