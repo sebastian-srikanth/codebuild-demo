@@ -21,9 +21,32 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      # Check standards of Coding
-      - pytest --cov=./scripts --cov-report xml:cov.xml
+      - echo Check standards of Coding
+      - 'pytest --junit-xml=reports/pytest_report.xml test' 
+      - 'pytest --junit-xml=reports/pylint_report.xml --pylint --pylint-error-types=RWEF ./scripts || true'
+      - 'pytest --cov-report=xml:reports/coverage_report.xml --cov=./scripts test || true'  
+    finally:
+      - echo Check report
       - coverage report --fail-under=100
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - echo build status completed
+
+reports:
+  pytest-report-group:
+    files:
+      - "pytest_report.xml"
+    base-directory: reports
+    file-format: JunitXml
+  pylint-report-group:
+    files:
+      - "pylint_report.xml"
+    base-directory: reports
+    discard-paths: yes
+    file-format: JunitXml
+  coverage-report-group:
+    files:
+      - "coverage_report.xml"
+    base-directory: reports
+    discard-paths: yes
+    file-format: COBERTURAXML
