@@ -38,17 +38,14 @@ reports:
     files:
       - "pytest_report.xml"
     base-directory: reports
-    discard-paths: yes
     file-format: JunitXml
   pylint-report-group:
     files:
       - "pylint_report.xml"
     base-directory: reports
-    discard-paths: yes
     file-format: JunitXml
   coverage-report-group:
     files:
       - "coverage_report.xml"
     base-directory: reports
-    discard-paths: yes
     file-format: COBERTURAXML
